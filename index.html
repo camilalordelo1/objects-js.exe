@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Exercício 002 - Array</title>
+</head>
+<body>
+    <header>
+        <div class="jumbotron bg-danger text-white">
+            <h1 class="display-4 font-weight-bold"> Exercício 002</h1>
+            <p class="lead">CAMILA LORDELO -> Usando Objetos em Javascript </p>
+        </div>
+    </header>
+
+    <section>
+        <!-- INICIO DIV CONTAINER    -->
+        <div class="container-sm border border-secondary pt-3 pb-3 rounded p-2 m-2 mx-auto w-75">
+            
+            <!-- INICIO FORM - CADASTRO -->
+            <form role="form" class="ajaxneeds-validation col-md-12 was-validated p-3 mx-auto">
+                <h1 class="">Cadastro do Aluno</h1>
+                <fieldset id="cadastro">
+                        <div class="row pt-2">
+                            <!-- CAMPO NOME -->
+                            <div class="col">
+                                <label for="inputNome">Nome</label>
+                                <input type="text" class="d form-control" name="inputNome" id="inputNome" value="" required>
+                            </div>
+                        </div>
+                        <div class="row pt-2">
+                            <!-- CAMPO RG -->
+                            <div class="col-md flex-wrap align-content-end">
+                                <label for="inputRg">RG</label>
+                                <input type="text"name="inputRg" id="inputRg" class="d form-control" value="" required>
+                            </div>
+                            <!-- CAMPO CPF -->
+                            <div class="d col-md flex-wrap align-content-end">
+                                <label for="inputCpf">CPF</label>
+                                <input type="text" name="inputCpf" id="inputCpf" class="d form-control" placeholder="000.000.000-00" value="" required>
+                            </div>
+                        </div>
+                        <!-- CAMPO CPF -->
+                        <div class="row pt-2">
+                            <div class="col">
+                                <label for="inputEmail">E-mail</label>
+                                <input type="email" name="inputEmail" id="inputEmail" value="" placeholder="teste@example.com" class="d form-control" required>
+                            </div>
+                        </div>
+                        <!-- BOTÃO CADASTRAR -->
+                        <div class="row">
+                            <input type="submit" class="btn btn-primary mt-3 mx-auto" value="Cadastrar" onclick="cadastrar()">
+                        </div>
+                </fieldset>
+                <div id='desbloquear1' style="display:none;">
+                    <input  type="button" class="btn btn-primary mt-3 mx-auto" value="EDITAR" id="botao" onclick="desbloquear1()">
+                </div>
+            </form>
+            <!-- FIM FORM CADASTRO -->
+
+            <!-- INICIO FORM - NOTAS -->
+            <form role="form" class="needs-validation col-md-12 was-validated p-3 mx-auto">
+                
+                <!-- INICIO FIELDSET NOTAS -->
+                <fieldset id="nota" style="display:none;">
+                <h3 class="pt-3">Notas</h3>
+                    <div class="row pt-2">
+                        <!-- CAMPO NOTA 1 -->
+                        <div class="col">
+                            <label for="inputN1">Nota 1</label>
+                            <input class="d2 rst form-control" type="number" name="inputN1" id="inputN1" value=" "  min="0" max="10" required>
+                        </div>
+                        <!-- CAMPO NOTA 2 -->
+                        <div class="col">
+                            <label for="inputN2">Nota 2</label>
+                            <input class="d2 rst form-control" type="number" name="inputN2" id="inputN2" value=" " min="0" max="10" required>
+                        </div>
+                        <!-- CAMPO NOTA 3 -->
+                        <div class="col">
+                            <label for="inputN3">Nota 3</label>
+                            <input class="d2 rst form-control" type="number" name="inputN3" id="inputN3" value=" " min="0" max="10" required>
+                        </div>
+                    </div>
+                    <!-- BOTÃO MÉDIA -->
+                    <div class="row pt-5">
+                        <input type="submit" class="btn btn-primary mx-auto" value="Calcular média" onclick="media()">
+                    </div>
+                
+                    <!-- DIV MOSTRA MEDIA -->
+                    <div class="row pt-3">
+                        <div class="col" id="mosM">
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- FIM FIELDSET NOTAS -->
+
+                <!-- BOTAO REFAZER MÉDIA-->
+                <fieldset id="botaoDes" style="display: none;">
+                    <div class="row pt-3 mb-3">
+                        <input type="button" class="btn btn-primary mx-auto" value="Recalcular média" onclick="desbloquear2()">
+                    </div>
+                </fieldset>
+
+                <!-- INICIO FIELDSET MODAL DADOS ALUNO-->
+                <fieldset id="resumo" style="display: none;">
+                    <!-- BOTÃO RESUMO -->
+                    <input type="button" class="d3 btn btn-danger btn-block font-weight-bold shadow-sm text-center pb-3 pt-3 btn-xl" data-toggle="modal" value="RESUMO DO ALUNO" onclick="resumo()" data-target="#modalResumo">
+
+                    <!-- INICIO MODAL -->
+                    <div class="modal fade" id="modalResumo" tabindex="-1" role="dialog" aria-labelledby="tituloModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <!-- CABEÇA MODAL -->
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="tituloModal">RESUMO DO ALUNO</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <!-- CORPO MODAL -->
+                                <div class="modal-body m-2 mx-auto">
+                                    <form>
+                                        <!-- NOME -->
+                                        <div class="row mr-2">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mNome">NOME: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mNome" id="mNome" value="" readonly >
+                                            </div>
+                                        </div>
+                                        <!-- RG -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mRg"> RG: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mRg" id="mRg" value="" readonly >
+                                            </div>
+                                        </div>
+                                        <!-- CPF -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mCpf"> CPF: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mCpf" id="mCpf" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- E-MAIL -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mEmail"> E-MAIL: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mEmail" id="mEmail" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- NOTA 1 -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mN1"> NOTA 1: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mN1" id="mN1" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- NOTA 2 -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mN2"> NOTA 2: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mN2" id="mN2" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- NOTA 3 -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mN3"> NOTA 3: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mN3" id="mN3" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- MÉDIA -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mMedia"> MÉDIA: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mMedia" id="mMedia" value="" readonly>
+                                            </div>
+                                        </div>
+                                        <!-- SITUAÇÃO -->
+                                        <div class="row mr-2 border-0">
+                                            <div class="col-4">
+                                                <label class="col-form-label font-weight-bold" for="mSitu"> SITUAÇÃO: </label>
+                                            </div>
+                                            <div class="col-8">
+                                                <input class="form-control-plaintext text-danger" type="text" name="mSitu" id="mSitu" value="" readonly>
+                                            </div>
+                                        </div>
+                                    </form>                    
+                                </div>
+                                <!-- FIM CORPO MODAL -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIM MODAL -->
+                </fieldset>
+                <!-- FIM FIELDSET MODAL DADOS ALUNO-->
+            </form>
+            <!-- FIM FORM NOTAS -->
+        </div>
+        <!-- FIM DIV CONTAINER    -->
+    </section>
+    <footer>
+        
+    </footer>
+    
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

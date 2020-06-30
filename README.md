@@ -1,6 +1,6 @@
 # objects-js.exe
 
- Exercise using Javascript objects.
+Exercise using Javascript objects.
  
  📌 Objective
   Create a student registration form

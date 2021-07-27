@@ -1,6 +1,4 @@
-# objects-js.exe
-
-Exercise using Javascript objects.
+# Exercise using Javascript objects.
  
  📌 Objective
  

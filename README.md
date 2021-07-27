@@ -1,4 +1,4 @@
-# Exercise using Javascript objects.
+# Exercise - Studying JavaScript objects.
  
  📌 Objective
  
